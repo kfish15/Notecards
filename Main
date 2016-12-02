@@ -1,0 +1,53 @@
+import random, time, copy
+
+
+file = "/Users/KFish15/Documents/Test/Terms"
+
+f = open(file, "r")
+
+combo = {}
+
+for line in f:
+    peach = line.split(": ")
+    peach[1] = peach[1].rstrip()
+    combo[peach[0]] = peach[1]
+
+
+d = combo.keys()
+random.shuffle(d)
+new_combo = {}
+
+
+def notecard(d, new_d): 
+    new_d = {}
+    s = ""
+    new_d = copy.deepcopy(d)
+    while len(new_d) != 0:
+        for x in d:
+            print x
+            s = raw_input("--$--"),
+            print d[x]
+            print
+            print "Did you get it right?"
+            y_o_n = raw_input("(Y)es or (N)o: ")
+            if y_o_n == "Y":
+                del new_d[x]
+                print len(d.keys())
+            elif y_o_n == "y":
+                del new_d[x]
+                print len(new_d.keys())
+            else:
+                print len(new_d.keys())
+            print
+            
+         
+        d=copy.deepcopy(new_d)    
+        new_d = copy.deepcopy(d)
+        #random.shuffle(d) 
+        
+       
+    print "Nice job!"
+    
+
+    
+notecard(combo, new_combo)
