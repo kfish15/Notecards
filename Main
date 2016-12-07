@@ -13,12 +13,11 @@ for line in f:
     combo[peach[0]] = peach[1]
 
 
-d = combo.keys()
-random.shuffle(d)
+
 new_combo = {}
 
-
-def notecard(d, new_d): 
+def notecard(d, new_d):
+     
     new_d = {}
     s = ""
     new_d = copy.deepcopy(d)
@@ -44,10 +43,40 @@ def notecard(d, new_d):
         d=copy.deepcopy(new_d)    
         new_d = copy.deepcopy(d)
         #random.shuffle(d) 
-        
-       
-    print "Nice job!"
-    
 
-    
+
+
+
+
+def edit_dict(d):
+    for x in d:
+        x=x.strip("'")
+        print x
+        
+    print 
+    print  
+    while True:
+        choice = raw_input("Would you like to remove any? (Must be exact match // Type 'Ex' when your done)")
+        if choice in combo:
+            del combo[choice]
+            print len(combo.keys())
+        if choice == "":
+            return combo
+        elif choice != "":
+            print
+            print
+            for x in combo:
+                x=x.strip("'")
+                print x
+            
+            
+ 
+ 
+       
+edit_dict(combo)
+print
+print    
+print
 notecard(combo, new_combo)
+
+
