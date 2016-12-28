@@ -1,82 +1,110 @@
-import random, time, copy
+import random, copy, textwrap, time
+from timeit import default_timer
 
 
-file = "/Users/KFish15/Documents/Test/Terms"
-
+file = "/Users/KFish15/Documents/Test/Terms.txt"                   # Insert absolute file path
 f = open(file, "r")
 
-combo = {}
+starting_terms = {}                                         
+for line in f:                                                              # Splits strings into term and definition 
+        split = line.split(": ")
+        split[1] = split[1].rstrip()
+        starting_terms[split[0]] = split[1]
 
-for line in f:
-    peach = line.split(": ")
-    peach[1] = peach[1].rstrip()
-    combo[peach[0]] = peach[1]
-
-
-
-new_combo = {}
-
-def notecard(d, new_d):
-     
-    new_d = {}
-    s = ""
-    new_d = copy.deepcopy(d)
-    while len(new_d) != 0:
-        for x in d:
-            print x
-            s = raw_input("--$--"),
-            print d[x]
-            print
-            print "Did you get it right?"
-            y_o_n = raw_input("(Y)es or (N)o: ")
-            if y_o_n == "Y":
-                del new_d[x]
-                print len(d.keys())
-            elif y_o_n == "y":
-                del new_d[x]
-                print len(new_d.keys())
-            else:
-                print len(new_d.keys())
-            print
-            
-         
-        d=copy.deepcopy(new_d)    
-        new_d = copy.deepcopy(d)
-        #random.shuffle(d) 
+modified_terms = {}
 
 
-
-
-
-def edit_dict(d):
+def edit_dict(d):                                                           # Function to eliminate any terms you don't want to be tested on
     for x in d:
-        x=x.strip("'")
-        print x
-        
+        x = x.strip("'")
+        print x        
     print 
     print  
     while True:
-        choice = raw_input("Would you like to remove any? (Must be exact match // Type 'Ex' when your done)")
-        if choice in combo:
-            del combo[choice]
-            print len(combo.keys())
+        choice = raw_input("Would you like to remove any?")
+        if choice in starting_terms:
+            del starting_terms[choice]
+            print len(starting_terms.keys())
         if choice == "":
-            return combo
+            print 
+            print
+            print "There are " + str(len(starting_terms.keys())) + " terms. Time to go to work!!"
+            return starting_terms
         elif choice != "":
             print
             print
-            for x in combo:
+            for x in starting_terms:
                 x=x.strip("'")
                 print x
+                
+                
+def notecard(d, temp_d):                                            #                        
+    list_keys = []
+    temp_d = {}
+    s = ""
+    temp_d = copy.deepcopy(d)
+    list_keys = list(temp_d.keys())
+    random.shuffle(list_keys) 
+    ask_timer = raw_input("Would you like to be timed?: ")
+    if ask_timer == "'":
+        start = default_timer()
+        print str(default_timer() - start)  + " seconds"
+    elif ask_timer == "y" or ask_timer == "yes":
+        start = default_timer()
+    elif ask_timer == "Y" or ask_timer == "Yes":
+        start = default_timer()
+    else:
+        pass
+    while len(temp_d) != 0:
+        for x in list_keys:
+            print x
+            s = raw_input("--$--")
+            if s == "slow hint":
+                for word in temp_d[x].split():
+                    print (textwrap.fill(word, 120)),
+                    time.sleep(0.75)
+            else:
+                print(textwrap.fill(temp_d[x], 120))
+                print
+                print "Did you get it right?"
+                yes_or_no = raw_input("(Y)es or (N)o: ")
+                if yes_or_no == "Y":
+                    del temp_d[x]
+                elif yes_or_no == "y":
+                    del temp_d[x]
+                elif yes_or_no == "'":
+                    del temp_d[x]
+                elif yes_or_no == "time":
+                    print "Current Time: " + str(default_timer() - start) + " seconds"
+                else:
+                    pass
+                print
             
             
- 
- 
-       
-edit_dict(combo)
-print
-print    
-print
-notecard(combo, new_combo)
+        
+        d = copy.deepcopy(temp_d)
+        temp_d.clear()  
+        new_d = copy.deepcopy(d)
+        list_keys = list(new_d.keys())
+        random.shuffle(list_keys)
+            
+        print "There's " + str(len(d)) + " terms left, keep going!"
+        print
+        print
 
+    print "Total Time: " + str(default_timer() - start) + " seconds"
+
+            
+def master_func():
+
+    edit_dict(starting_terms)
+    print
+    print
+    print
+    time.sleep(1.15)
+    notecard(starting_terms, modified_terms)
+    print "Way to go!!!"
+
+
+master_func()
 
