@@ -1,2 +1,9 @@
 # Notecards
-This is a basic program I use to test myself on terms & concepts from a given course. I save the terms I want to test myself in the "Terms" document, then run this until I get all the terms correct. It isn't pretty, but gets the job done. 
+This is a basic program I use to test myself on terms & concepts from a given course. 
+
+I save the terms in a text file, in this format:
+
+Term: ...Definition...
+
+As of right now, there can't be any blank lines between terms. 
+
