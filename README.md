@@ -1,7 +1,10 @@
 
 <h1> Notecards, Notecards, Notecards! </h1>
 
-This is a basic program I use to test myself on terms & concepts from a given course. 
+<h3> Synopsis </h3>
+
+This is a basic program I use to test myself on terms & concepts, 
+
 
 I save the terms in a text file, in this format:
 
