@@ -1,7 +1,7 @@
 
 <h1> Notecards, Notecards, Notecards! </h1>
 
-<h3> Synopsis </h3>
+## Synopsis
 
 This is a basic program I use to test myself on terms & concepts, 
 
