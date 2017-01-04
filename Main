@@ -2,7 +2,7 @@ import random, copy, textwrap, time
 from timeit import default_timer
 
 
-file = "/Users/KFish15/Documents/Test/MT3_F320_Terms.txt"                   # Insert absolute file path
+file = ""                   # !!!!!!!!!!!!! Insert absolute file path here !!!!!!!!!!!!!!
 
 starting_terms = {}
 with open(file) as f_in:
