@@ -15,8 +15,6 @@ Like such:
 
 <img width="971" alt="screen shot 2017-01-08 at 12 54 35 am" src="https://cloud.githubusercontent.com/assets/24307914/21747961/4817be32-d53d-11e6-8132-4260420c5246.png">
 
-NOTE that you cant pull from 
-
 ## Functionality
 -- Reads in term/definition combinations from a file
 -- Prints the full list lf of terms, and asks you if you want to delete any terms from the list 
