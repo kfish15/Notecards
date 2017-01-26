@@ -1,14 +1,14 @@
+
 import random, copy, textwrap, time
 from timeit import default_timer
 
-
-file = ""                   # !!!!!!!!!!!!! Insert absolute file path here !!!!!!!!!!!!!!
+file = raw_input("Insert absolute file path: ")                   # Insert absolute file path
 
 starting_terms = {}
 with open(file) as f_in:
-    lines = (line.rstrip() for line in f_in) # All lines including the blank ones
-    lines = (line for line in lines if line) # Non-blank lines
-    for x in lines:                                                              # Splits strings into term and definition 
+    lines = (line.rstrip() for line in f_in)                                # All lines including the blank ones
+    lines = (line for line in lines if line)                                # Non-blank lines
+    for x in lines:                                                         # Splits strings into term and definition 
         split = x.split(": ")
         split[1] = split[1].rstrip()
         starting_terms[split[0]] = split[1]
@@ -40,8 +40,8 @@ def edit_dict(d):                                                           # Fu
                 print x
                 
                 
-def notecard(d, temp_d):                                                                 
-    list_keys = []
+def notecard(d, temp_d):                                                    # Shows you the term, then the definition, then asks if you got it right                        
+    list_keys = []                                                          # Runs until you get all of them correct 
     temp_d = {}
     s = ""
     temp_d = copy.deepcopy(d)
@@ -51,9 +51,9 @@ def notecard(d, temp_d):
     if ask_timer == "'":
         start = default_timer()
         print str(default_timer() - start)  + " seconds"
-    elif ask_timer == "y" or ask_timer == "yes":
+    elif ask_timer == "y":
         start = default_timer()
-    elif ask_timer == "Y" or ask_timer == "Yes":
+    elif ask_timer == "Y":
         start = default_timer()
     else:
         pass
@@ -109,4 +109,3 @@ def master_func():
 
 
 master_func()
-
